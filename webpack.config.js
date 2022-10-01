@@ -1,12 +1,11 @@
 const path = require('path');
-const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   entry: './client/index.js',
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'build'),
     filename: 'bundle.js'
   },
   mode: 'production',
@@ -41,7 +40,7 @@ module.exports = {
         }
       },
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.[ac]ss$/i,
         use: [
           // Creates `style` nodes from JS strings
           "style-loader",
