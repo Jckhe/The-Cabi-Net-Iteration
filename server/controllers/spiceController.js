@@ -5,10 +5,10 @@ const spiceController = {};
 spiceController.getSpices = (req, res, next) => {
     console.log('inside getSpices');
     const { user } = req.params;
-    const getQuery = `SELECT * FROM spiceTable WHERE assocUser = ${user}`;
+    const getQuery = `SELECT * FROM spiceTable WHERE assocUser = '${user}'`;
     db.query(getQuery)
         .then((spices) => {
-            res.locals.spices = spices;
+            res.locals.spices = spices.rows;
             return next();
         })
         .catch((err) => {next(err)})
