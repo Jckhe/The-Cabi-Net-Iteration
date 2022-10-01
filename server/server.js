@@ -17,8 +17,9 @@ app.post('/signup', userController.signUp, (req, res) => {
     res.status(200).send("howdy")
 })
 
-app.get('/login', (req, res) => {
+app.get('/login', userController.logIn, (req, res) => {
     console.log('logging in');
+    res.status(200).send(`${res.locals.username} IS LOGGED TF IN`)
 })
 
 // get request for spices
