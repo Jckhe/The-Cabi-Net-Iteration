@@ -7,11 +7,11 @@ import store from './store';
 import style from './style.css';
 
 // Use this render after the store is configured and working properly!
-// ReactDOM.render(
-//   <Provider store={store}>
-//     <App />,
-//   </Provider>,
-//   document.getElementById('root')
-// );
+ReactDOM.render(
+  <Provider store={store}>
+    <App />,
+  </Provider>,
+  document.getElementById('root')
+);
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// ReactDOM.render(<App />, document.getElementById('root'));

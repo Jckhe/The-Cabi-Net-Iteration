@@ -35,6 +35,10 @@ const spicesReducer = (state = initialState, action) => {
                 ...state,
                 spiceRack : updatedSpiceRack,
             }
+        
+        default: {
+            return state
+        }
     }
 };
 
