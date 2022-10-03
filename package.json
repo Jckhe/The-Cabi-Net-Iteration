@@ -21,6 +21,8 @@
   "homepage": "https://github.com/HACKxolotl/the-cabi-net#readme",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",
+    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
     "express": "^4.18.1",
     "pg": "^8.8.0",
     "react": "^18.2.0",

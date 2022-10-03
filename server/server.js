@@ -14,12 +14,12 @@ app.use('/build', express.static(path.resolve(__dirname, '../build')));
 
 app.post('/signup', userController.signUp, (req, res) => {
     console.log('creating user');
-    res.status(200).send("howdy")
+    res.status(200).send("howdy hackxolotl")
 })
 
 app.get('/login', userController.logIn, (req, res) => {
     console.log('logging in');
-    res.status(200).send(`${res.locals.username} IS LOGGED TF IN`)
+    res.status(200).send(`${res.locals.username} IS LOGGED IN`)
 })
 
 // get request for spices
@@ -32,7 +32,7 @@ app.get('/spice/:user', spiceController.getSpices, (req, res) => {
 app.post('/spice/:user', spiceController.createSpice, (req, res) => {
     console.log('creating spice');
     // may need to send created spice to front-end?
-    res.status(200).json();
+    res.status(200).json(res.locals.newSpice);
 })
 
 // patch request for spices
