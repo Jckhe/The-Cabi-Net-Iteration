@@ -14,6 +14,7 @@ const SpiceDisplay = ({
             <strong>{name}</strong>
             {remaining}
             {containerSize}
+            {/* update Spice button instead of increment/decrement */}
             <button className='increment' onClick={() => incrementSpice(id)}>+</button>
             <button className='decrement' onClick={() => decrementSpice(id)}>-</button>
             <button className='delete' onClick={() => deleteSpice(id)}>Delete</button>

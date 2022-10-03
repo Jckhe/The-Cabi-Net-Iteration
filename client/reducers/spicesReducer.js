@@ -4,7 +4,6 @@ const initialState = {
     totalSpices: 0,
     spiceRack: [],
     newSpice: '',
-    synced: true,
 };
 const spicesReducer = (state = initialState, action) => {
     switch(action.type){
@@ -15,23 +14,26 @@ const spicesReducer = (state = initialState, action) => {
                     name: action.payload.name,
                     size: action.payload.size,
                     amount: action.payload.amount,
+                    id: action.paylod.id,
                 }),
-                totalSpices: state.totalSpices + 1,
-                synced: false,
+                totalSpices: state.totalSpices + 1, 
             };
         case types.DELETE_SPICE:
-            
-            // iterate through array, for Each object,  if id = xyz, delete object, and assign state to new updated spicerack.
+            let deletedSpiceRack = state.spiceRack.filter(spice => spice.id !== action.payload.id);
             return{
                 ...state,
-                spiceRack: [],
-                totalSpices = state.totalSpices - 1,
-                synced: false,
+                spiceRack: deletedSpiceRack,
+                totalSpices : state.totalSpices - 1,
             }
         case types.UPDATE_AMOUNT:
+            let updatedSpiceRack = state.spiceRack.forEach(spice => {
+                if (spice.id = action.payload.id){
+                    spice = action.payload;
+                }
+            })
             return{
                 ...state,
-                spiceRack : 
+                spiceRack : updatedSpiceRack,
             }
     }
 };

@@ -17,7 +17,7 @@ spiceController.getSpices = (req, res, next) => {
             res.locals.spices = spices.rows;
             return next();
         })
-        .catch((err) => {next(err)})
+        .catch((err) => { next(err) })
 }
 
 spiceController.createSpice = (req, res, next) => {
@@ -26,8 +26,8 @@ spiceController.createSpice = (req, res, next) => {
     const { name, remaining, containerSize } = req.body;
     const addQuery = `INSERT INTO spiceTable(name, remaining, containerSize, assocUser) VALUES ('${name}', ${remaining}, '${containerSize}', '${user}')`;
     db.query(addQuery)
-        .then(() => {return next()})
-        .catch((err) => {return next(err)})
+        .then(() => { return next() })
+        .catch((err) => { return next(err) })
 }
 
 spiceController.updateSpice = (req, res, next) => {
@@ -35,8 +35,8 @@ spiceController.updateSpice = (req, res, next) => {
     const { id, remaining } = req.body;
     const updateQuery = `UPDATE spiceTable SET remaining = ${remaining} WHERE id = ${id}`;
     db.query(updateQuery)
-        .then(() => {return next()})
-        .catch(err => {return next(err)})
+        .then(() => { return next() })
+        .catch(err => { return next(err) })
 }
 
 spiceController.deleteSpice = (req, res, next) => {
@@ -44,8 +44,8 @@ spiceController.deleteSpice = (req, res, next) => {
     const { id } = req.body;
     const deleteQuery = `DELETE FROM spiceTable WHERE id = ${id}`;
     db.query(deleteQuery)
-        .then(() => {return next()})
-        .catch(err => {return next(err)})
+        .then(() => { return next() })
+        .catch(err => { return next(err) })
 }
 
 module.exports = spiceController;
