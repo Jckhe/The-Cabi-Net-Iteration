@@ -21,7 +21,7 @@ const SpiceContainer = () => {
     incrementSpice : (id) => dispatch(XX),
     decrementSpice : (id) => dispatch(XX),
     deleteSpice : (id) => dispatch(XX)
-  })
+  }) 
 
   const spiceArray = [];
   spiceRack.forEach((spice) => {
