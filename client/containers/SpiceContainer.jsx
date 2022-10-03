@@ -3,7 +3,10 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import SpiceDisplay from '../components/SpiceDisplay';
 
+
 // do we need to import actions into this component? 
+
+// on mount, make a get request to the database?
 
 // I believe we need to have use mapStateToProps and mapDispatchToProps in this component. then push prop drill them down to SpiceDisplay
 

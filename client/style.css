@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+}
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+}
+
+.nav-bar > button {
+  margin-right: 13px;
+  margin-left: auto;
+}
+
+.add-spice-container {
+  border-style: solid;
+  width: 800px;
+  margin: 0 auto;
+}
+
+.spice-container {
+  border-style: solid;
+  width: 800px;
+  margin: 0 auto;
+}

@@ -23,3 +23,4 @@ const SpiceDisplay = ({
 
 
 export default SpiceDisplay;
+
