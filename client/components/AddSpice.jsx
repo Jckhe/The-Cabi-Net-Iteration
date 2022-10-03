@@ -1,26 +1,31 @@
 import React from 'react';
 
-export default function AddSpice() {
+// I think prop drilling the props down from SpiceContainer will be better than mappingstate and dispatch to props here..
+// then once onSubmit is invoked, we can go up the chain into SpiceContainer and send the info to actions.js
 
-  // I believe we need to have use mapStateToProps and mapDispatchToProps in this component
-  // then push prop drill them down to SpiceDisplay
-
-  function handleClick() {
-    console.log('ahh you clicked me')
+const handleClick = () => {
+  const name = document.getElementById('name').value
+  const containerSize = document.getElementById('containerSize').value
+  const remaining = document.getElementById('remaining').value
+  const spiceInfo = {
+    name: name,
+    containerSize: containerSize,
+    remaining: remaining
   }
+  createSpice(spiceInfo)
+}
+const AddSpice = (createSpice) => (
+  <div className="add-spice-container">
+    <form>
+      Name:
+      <input type="text" id="name"></input>
+      Size:
+      <input type="text" id="containerSize"></input>
+      Amount:
+      <input type="text" id="remaining"></input>
+      <button type="submit" onClick={handleClick}>Add!</button>
+    </form>
+  </div>
+)
 
-  return (
-    <div className="add-spice-container">
-      <h2>AddSpice component!</h2>
-      <form>
-        Type:
-        <input></input>
-        Size:
-        <input></input>
-        Amount:
-        <input></input>
-        <button onClick={handleClick}>Add!</button>
-      </form>
-    </div>
-  )
-};
+export default AddSpice;
