@@ -16,7 +16,8 @@ const spicesReducer = (state = initialState, action) => {
                 totalSpices: state.totalSpices + 1, 
             };
         case types.DELETE_SPICE:
-            let deletedSpiceRack = state.spiceRack.filter(spice => spice.id !== action.payload.id);
+            let deletedSpiceRack = state.spiceRack.slice();
+            deletedSpiceRack = deletedSpiceRack.filter(spice => spice.id !== action.payload);
             return{
                 ...state,
                 spiceRack: deletedSpiceRack,

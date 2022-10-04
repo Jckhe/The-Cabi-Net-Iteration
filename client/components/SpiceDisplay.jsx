@@ -3,7 +3,7 @@ import React from 'react';
 const SpiceDisplay = ({ 
     name, 
     remaining, 
-    containerSize, 
+    containersize, 
     id,
     updateSpice,
     deleteSpice
@@ -21,9 +21,11 @@ const SpiceDisplay = ({
     return (
         <div className='spice-display'>
             <p>
-                <strong>{name}</strong>
-                {remaining}
-                {containerSize}
+                <div className='info-display'>
+                    <strong>{name}</strong>
+                    <em>{remaining}%</em>
+                    <>Size: {containersize}</>
+                </div>
                 <input type='number' id={`${id}`}></input>
                 <button className='update' onClick={handleClick}>Update Amount</button>
                 <button className='delete' onClick={() => deleteSpice(id)}>Delete</button>
