@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+const spicesRouter = require('./routes/spices.js');
 const PORT = 3000;
 
 // middleware
@@ -24,31 +25,32 @@ app.use('/build', express.static(path.resolve(__dirname, '../build')));
 //     res.status(200).send(`${res.locals.username} IS LOGGED IN`)
 // })
 
-// get request for spices
-app.get('/spice/:user', spiceController.getSpices, (req, res) => {
-    console.log('sending spices');
-    res.status(200).json(res.locals.spices);
-})
+// // get request for spices
+// app.get('/spice/:user', spiceController.getSpices, (req, res) => {
+//     console.log('sending spices');
+//     res.status(200).json(res.locals.spices);
+// })
 
-// post request for spices
-app.post('/spice/:user', spiceController.createSpice, (req, res) => {
-    console.log('creating spice');
-    // may need to send created spice to front-end?
-    res.status(200).json(res.locals.newSpice);
-})
+// // post request for spices
+// app.post('/spice/:user', spiceController.createSpice, (req, res) => {
+//     console.log('creating spice');
+//     // may need to send created spice to front-end?
+//     res.status(200).json(res.locals.newSpice);
+// })
 
-// patch request for spices
-app.patch('/spice', spiceController.updateSpice, (req,res) => {
-    console.log('updating spice');
-    res.status(200).json();
-})
+// // patch request for spices
+// app.patch('/spice', spiceController.updateSpice, (req,res) => {
+//     console.log('updating spice');
+//     res.status(200).json();
+// })
 
-// delete request for spices
-app.delete('/spice', spiceController.deleteSpice, (req,res)=> {
-    console.log('deleting spice');
-    res.status(200).json();
-})
+// // delete request for spices
+// app.delete('/spice', spiceController.deleteSpice, (req,res)=> {
+//     console.log('deleting spice');
+//     res.status(200).json();
+// })
 
+app.use('/spices', spicesRouter);
 
 app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/index.html'));

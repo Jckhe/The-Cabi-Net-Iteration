@@ -5,20 +5,14 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server/server.js",
-    "dev": "npm start & webpack-dev-server --mode development --open --hot",
-    "build": "webpack --mode production"
+    "build": "export NODE_ENV=production; webpack",
+    "dev": "export NODE_ENV=development; webpack serve --open & export NODE_ENV=production; nodemon server/server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/HACKxolotl/the-cabi-net.git"
+  "nodemonConfig": {
+    "ignore": "build"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Octopus",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/HACKxolotl/the-cabi-net/issues"
-  },
-  "homepage": "https://github.com/HACKxolotl/the-cabi-net#readme",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",
     "axios": "^0.27.2",
@@ -41,6 +35,13 @@
     "babel-loader": "^8.2.5",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.7.1",
+    "eslint": "^8.24.0",
+    "eslint-import-resolver-webpack": "^0.13.2",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-react": "^7.31.8",
+    "file-loader": "^6.2.0",
+    "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.0",
     "node": "^18.10.0",
     "nodemon": "^2.0.20",
