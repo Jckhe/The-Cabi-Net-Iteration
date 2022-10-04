@@ -8,14 +8,11 @@ const initialState = {
 const spicesReducer = (state = initialState, action) => {
     switch(action.type){
         case types.ADD_SPICE:
+            let addedSpiceRack = state.spiceRack.slice();
+            addedSpiceRack.push(action.payload);
             return{
                 ...state,
-                spiceRack: state.spiceRack.concat({
-                    name: action.payload.name,
-                    size: action.payload.size,
-                    amount: action.payload.amount,
-                    id: action.paylod.id,
-                }),
+                spiceRack: addedSpiceRack,
                 totalSpices: state.totalSpices + 1, 
             };
         case types.DELETE_SPICE:
@@ -26,14 +23,22 @@ const spicesReducer = (state = initialState, action) => {
                 totalSpices : state.totalSpices - 1,
             }
         case types.UPDATE_AMOUNT:
-            let updatedSpiceRack = state.spiceRack.forEach(spice => {
-                if (spice.id = action.payload.id){
-                    spice = action.payload;
+            let updatedSpiceRack = state.spiceRack.slice()
+            updatedSpiceRack.forEach(spice => {
+                if (spice.id === action.payload.id){
+                    spice.remaining = action.payload.remaining;
                 }
             })
             return{
                 ...state,
                 spiceRack : updatedSpiceRack,
+            }
+
+        case types.GET_SPICES:
+            let newSpiceRack = action.payload;
+            return{
+                ...state,
+                spiceRack : newSpiceRack
             }
         
         default: {

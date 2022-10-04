@@ -10,6 +10,7 @@ const spiceController = require('./controllers/spiceController.js');
 // parsing and static files
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.resolve(__dirname, '/client')));
 app.use('/build', express.static(path.resolve(__dirname, '../build')));
 
 // COMMENTED OUT FOR NOW: Hardcoding user for now

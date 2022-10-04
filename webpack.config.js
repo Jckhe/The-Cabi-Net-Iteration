@@ -13,7 +13,7 @@ module.exports = {
     port: 8080,
     host: 'localhost',
     proxy: {
-      '/api/**': {
+      '/spice/**': {
       target: 'http://localhost:8080/',
       router: () => 'http://localhost:3000',
       secure: false,
