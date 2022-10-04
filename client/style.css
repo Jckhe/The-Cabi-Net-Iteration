@@ -1,10 +1,23 @@
 body {
   margin: 0;
+  background-color: rgb(125, 90, 80);
+}
+
+input {
+  padding: 3px;
+  margin: 5px;
+}
+
+button {
+  padding: 3px;
+  margin: 5px;
+  background-color: white;
+  color: black;
+  border-radius: 5px;
 }
 
 .nav-bar {
-  display: flex;
-  align-items: center;
+  text-align: center;
 }
 
 .nav-bar > button {
@@ -12,14 +25,37 @@ body {
   margin-left: auto;
 }
 
+.add-bar {
+  font-size: large;
+}
+
 .add-spice-container {
   border-style: solid;
   width: 800px;
-  margin: 0 auto;
+  margin: 10px auto;
+  text-align: center;
+  border-radius: 5px;
+  background: rgb(252, 222, 192);
 }
 
 .spice-container {
   border-style: solid;
   width: 800px;
   margin: 0 auto;
+  border-radius: 5px;
+  background-color: black;
+}
+
+.spice-display {
+  display: flex;
+  justify-content: space-around;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: rgb(252, 222, 192);
+  margin: 5px;
+}
+
+.info-display {
+  display: flex;
+  justify-content: space-between;
 }

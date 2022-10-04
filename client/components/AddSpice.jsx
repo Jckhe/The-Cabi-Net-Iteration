@@ -21,6 +21,7 @@ const AddSpice = (props) => {
 
   return (
     <div className="add-spice-container">
+      <p><strong className='add-bar'>Add New Spice!</strong></p>
       <label>Name:</label>  
       <input type="text" id="name"></input>
       <label>Container Size:</label>

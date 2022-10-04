@@ -26,7 +26,7 @@ const SpiceContainer = (props) => {
 
   const spiceArray = [];
   props.spiceRack.forEach((spice) => {
-    spiceArray.push(<SpiceDisplay name={spice.name} remaining={spice.remaining} containerSize={spice.containerSize} id={spice.id} updateSpice={props.updateSpice} deleteSpice={props.deleteSpice} key={spice.id}/>)
+    spiceArray.push(<SpiceDisplay name={spice.name} remaining={spice.remaining} containersize={spice.containersize} id={spice.id} updateSpice={props.updateSpice} deleteSpice={props.deleteSpice} key={spice.id}/>)
   })
 
   return (

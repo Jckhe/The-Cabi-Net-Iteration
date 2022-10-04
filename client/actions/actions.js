@@ -18,14 +18,12 @@ export const addSpice = spiceInfo => (dispatch) => {
 
 // Is it possible to send back the ID that was deleted? 
 export const deleteSpice = id => (dispatch) => {
-    console.log(id)
     const ID = {id: id}
-    console.log(ID)
     axios.delete('/spice', {data: ID})
         .then( data => {
             dispatch({
             type: types.DELETE_SPICE,
-            payload: data,
+            payload: id,
         })})
         .catch(error => console.log(error))
 };
