@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreamators } from 'redux';
 import { deleteSpice, getSpices, updateAmount } from '../actions/actions.js';
 import SpiceDisplay from '../components/SpiceDisplay.jsx';
 

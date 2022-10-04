@@ -6,7 +6,7 @@ import thunk from 'redux-thunk';
 
 
 const store = configureStore(
-    {reducer: reducers},
+    reducers,
     composeWithDevTools(applyMiddleware(thunk)),
     );
 

@@ -5,6 +5,9 @@ import axios from 'axios';
 
 // To backend team: yes we will need to have updated spice info sent back from the back end; we can access spice by name, but we want to access by ID created in DB in the the case that there are replicates of each spice. 
 
+
+
+
 export const addSpice = spiceInfo => (dispatch) => {
     console.log("addspice dispatch");
     axios.post('http://localhost:3000/spice/HACKxolotl', {spiceInfo})
@@ -30,7 +33,7 @@ export const deleteSpice = id => (dispatch) => {
 
 export const updateAmount = spiceInfo => (dispatch) => {
     axios.patch('/spice', {spiceInfo})
-        .then( data => {
+        .then(data => {
             dispatch({
             type: types.UPDATE_AMOUNT,
             payload: spiceInfo,
