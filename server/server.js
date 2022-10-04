@@ -5,22 +5,24 @@ const PORT = 3000;
 
 // middleware
 const spiceController = require('./controllers/spiceController.js');
-const userController = require('./controllers/userController.js');
+// const userController = require('./controllers/userController.js');
 
 // parsing and static files
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.resolve(__dirname, '/client')));
 app.use('/build', express.static(path.resolve(__dirname, '../build')));
 
-app.post('/signup', userController.signUp, (req, res) => {
-    console.log('creating user');
-    res.status(200).send("howdy hackxolotl")
-})
+// COMMENTED OUT FOR NOW: Hardcoding user for now
+// app.post('/signup', userController.signUp, (req, res) => {
+//     console.log('creating user');
+//     res.status(200).send("howdy hackxolotl")
+// })
 
-app.get('/login', userController.logIn, (req, res) => {
-    console.log('logging in');
-    res.status(200).send(`${res.locals.username} IS LOGGED IN`)
-})
+// app.get('/login', userController.logIn, (req, res) => {
+//     console.log('logging in');
+//     res.status(200).send(`${res.locals.username} IS LOGGED IN`)
+// })
 
 // get request for spices
 app.get('/spice/:user', spiceController.getSpices, (req, res) => {

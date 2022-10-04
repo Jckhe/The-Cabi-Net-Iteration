@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import SpiceDisplay from '../components/SpiceDisplay';
+import { bindActionCreamators } from 'redux';
+import { deleteSpice, getSpices, updateAmount } from '../actions/actions.js';
+import SpiceDisplay from '../components/SpiceDisplay.jsx';
 
 
 // do we need to import actions into this component? 
@@ -10,27 +11,28 @@ import SpiceDisplay from '../components/SpiceDisplay';
 
 // I believe we need to have use mapStateToProps and mapDispatchToProps in this component. then push prop drill them down to SpiceDisplay
 
-const SpiceContainer = () => {
+const mapStateToProps = state => ({
+  spiceRack: state.spices.spiceRack
+})
 
-  const mapStateToProps = ({ spices }) => ({
-    spiceRack: spices.spiceRack
-  })
+// NEEDS FUNCTIONS FROM 'actions.js' INSIDE 'dispatch()' ONCE THEY HAVE NAMES
+const mapDispatchToProps = dispatch => ({
+  getSpices : () => dispatch(getSpices()),
+  updateSpice : (id) => dispatch(updateAmount(id)),
+  deleteSpice : (update) => dispatch(deleteSpice(update))
+}) 
 
-  // NEEDS FUNCTIONS FROM 'actions.js' INSIDE 'dispatch()' ONCE THEY HAVE NAMES
-  const mapDispatchToProps = dispatch => ({
-    incrementSpice : (id) => dispatch(XX),
-    decrementSpice : (id) => dispatch(XX),
-    deleteSpice : (id) => dispatch(XX)
-  })
+const SpiceContainer = (props) => {
 
   const spiceArray = [];
-  spiceRack.forEach((spice) => {
-    spiceArray.push(<SpiceDisplay name={spice.name} remaining={spice.remaining} containerSize={spice.containerSize} id={spice.id} incrementSpice={props.incrementSpice} decrementSpice={props.decrementSpice} deleteSpice={props.deleteSpice} />)
+  props.spiceRack.forEach((spice) => {
+    spiceArray.push(<SpiceDisplay name={spice.name} remaining={spice.remaining} containerSize={spice.containerSize} id={spice.id} updateSpice={props.updateSpice} deleteSpice={props.deleteSpice} key={spice.id}/>)
   })
 
   return (
     (
       <div className='spice-container'>
+        <button onClick={props.getSpices}>Refresh</button>
         {spiceArray}
       </div>
     )

@@ -5,21 +5,32 @@ const SpiceDisplay = ({
     remaining, 
     containerSize, 
     id,
-    incrementSpice,
-    decrementSpice,
+    updateSpice,
     deleteSpice
-}) => (
-    <div className='spice-display'>
-        <p>
-            <strong>{name}</strong>
-            {remaining}
-            {containerSize}
-            <button className='increment' onClick={() => incrementSpice(id)}>+</button>
-            <button className='decrement' onClick={() => decrementSpice(id)}>-</button>
-            <button className='delete' onClick={() => deleteSpice(id)}>Delete</button>
-        </p>
-    </div>   
-)
+}) => {
+
+    const handleClick = () => {
+        const newRemaining = document.getElementById(`${id}`).value;
+        const updatedSpice = {
+            remaining: newRemaining,
+            id: id
+        };
+        updateSpice(updatedSpice);
+    }
+
+    return (
+        <div className='spice-display'>
+            <p>
+                <strong>{name}</strong>
+                {remaining}
+                {containerSize}
+                <input type='number' id={`${id}`}></input>
+                <button className='update' onClick={handleClick}>Update Amount</button>
+                <button className='delete' onClick={() => deleteSpice(id)}>Delete</button>
+            </p>
+        </div>   
+    )
+}
 
 
 export default SpiceDisplay;
