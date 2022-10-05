@@ -1,13 +1,16 @@
 const db = require('../connectPg.js');
-const bcrypt = require('bcryptjs');
-const salt = bcrypt.genSaltSync(10);
-
+const bcrypt = require('bcrypt');
+const SALT_WORK_FACTOR = 6;
+let salt = bcrypt.genSaltSync(SALT_WORK_FACTOR)
 const userController = {};
 
 userController.signUp = (req, res, next) => {
     console.log('inside signup');
-    const { username } = req.body;
-    const hashPass = bcrypt.hashSync(`${req.body.password}`, salt);
+    const { username, password } = req.body;
+    //generate salt using genSaltSync
+    //reassign password to the result of hash syncing with salt
+    const hashPass = bcrypt.hashSync(password, salt);
+    console.log("PASSWORD", hashPass)
     const params = [username, hashPass];
     const addQuery = `INSERT INTO userTable(username, password) VALUES ($1, $2)`;
     db.query(addQuery, params)
@@ -16,15 +19,16 @@ userController.signUp = (req, res, next) => {
 }
 
 userController.logIn = (req, res, next) => {
-    console.log('inside login');
-    const { username } = req.body;
-    const hashPass = bcrypt.hashSync(`${req.body.password}`, salt);   
-    const params = [ username, hashPass ];
-    const getQuery = 'SELECT username FROM userTable WHERE username = $1 AND password = $2';
+
+    const { username, password } = req.body;
+    const params = [username]
+    const getQuery = `SELECT * FROM usertable WHERE username = $1`;
     db.query(getQuery, params)
         .then((user) => {
             res.locals.username = user.rows[0].username
-            return next()})
+            if (bcrypt.compareSync(password, user.rows[0].password)) next()
+            else next({message: `incorrect username/password combination!`})
+        })
         .catch((err) => {return next(err)})
 }
 
