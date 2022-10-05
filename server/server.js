@@ -4,6 +4,7 @@ const app = express();
 const spicesRouter = require('./routes/spices.js');
 const usersRouter = require('./routes/users.js');
 
+const dotenv = require('dotenv');
 //middleware app.use functions
 //parsing json, etc
 app.use(express.json());
@@ -32,5 +33,8 @@ app.use((req, res) => res.status(404).send('404, page/route does not exist !'));
 app.listen(3000, () => {
   console.log('listening on port 3000')
 });
+
+
+dotenv.config();
 
 module.exports = app;
