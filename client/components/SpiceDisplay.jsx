@@ -1,14 +1,17 @@
 import React from 'react';
 
-const SpiceDisplay = ({ 
-    name, 
-    remaining, 
-    containersize, 
-    id,
-    updateSpice,
-    deleteSpice
-}) => {
 
+const SpiceDisplay = (props) => {
+    //destructured object of the props, pased from SpiceContainer
+    const { 
+        name, 
+        remaining, 
+        containersize, 
+        id,
+        updateSpice,
+        deleteSpice
+    } = props;
+    
     const handleClick = () => {
         const newRemaining = document.getElementById(`${id}`).value;
         const updatedSpice = {
@@ -16,7 +19,7 @@ const SpiceDisplay = ({
             id: id
         };
         updateSpice(updatedSpice);
-    }
+    };
 
     return (
         <div className='spice-display'>
@@ -31,8 +34,8 @@ const SpiceDisplay = ({
                 <button className='delete' onClick={() => deleteSpice(id)}>Delete</button>
             </p>
         </div>   
-    )
-}
+    );
+};
 
 
 export default SpiceDisplay;
