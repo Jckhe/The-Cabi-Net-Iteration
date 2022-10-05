@@ -19,11 +19,13 @@ export const generateSpiceListActionCreator = (spiceList) => ({
     payload: spiceList,
 });
 
+//the spiceObj is the entire returned spice object from the database
 export const updateSpiceActionCreator = (spiceObj) => ({
     type: types.UPDATE_SPICE,
     payload: spiceObj,
 });
 
+//id is the id of the spice from the database
 export const deleteSpiceActionCreator = (id) => ({
     type: types.DELETE_SPICE,
     payload: id,
