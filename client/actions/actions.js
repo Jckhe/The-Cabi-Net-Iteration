@@ -6,29 +6,29 @@ import * as types from '../constants/actionTypes.js';
 
 
 export const loggedInActionCreator = () => ({
-    type: types.LOGGED_IN,
+  type: types.LOGGED_IN,
 });
 
 export const userActionCreator = (username) => ({
-    type: types.USER,
-    payload: username,
+  type: types.USER,
+  payload: username,
 });
 
 export const generateSpiceListActionCreator = (spiceList) => ({
-    type: types.GENERATE_SPICE,
-    payload: spiceList,
+  type: types.GENERATE_SPICE,
+  payload: spiceList,
 });
 
 //the spiceObj is the entire returned spice object from the database
 export const updateSpiceActionCreator = (spiceObj) => ({
-    type: types.UPDATE_SPICE,
-    payload: spiceObj,
+  type: types.UPDATE_SPICE,
+  payload: spiceObj,
 });
 
 //id is the id of the spice from the database
 export const deleteSpiceActionCreator = (id) => ({
-    type: types.DELETE_SPICE,
-    payload: id,
+  type: types.DELETE_SPICE,
+  payload: id,
 });
 
 

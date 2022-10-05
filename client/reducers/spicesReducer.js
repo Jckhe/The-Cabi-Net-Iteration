@@ -1,9 +1,9 @@
 import * as types from '../constants/actionTypes';
 
 const initialState = {
-    spiceRack: [],
-    loggedIn: false,
-    username: '',
+  spiceRack: [],
+  loggedIn: false,
+  username: '',
 };
 
 const spicesReducer = (state = initialState, action) => {
