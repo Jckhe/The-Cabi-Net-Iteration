@@ -12,30 +12,30 @@ import SpiceDisplay from '../components/SpiceDisplay.jsx';
 
 const mapStateToProps = state => ({
   spiceRack: state.spices.spiceRack
-})
+});
 
 // NEEDS FUNCTIONS FROM 'actions.js' INSIDE 'dispatch()' ONCE THEY HAVE NAMES
 const mapDispatchToProps = dispatch => ({
   getSpices : () => dispatch(getSpices()),
   updateSpice : (id) => dispatch(updateAmount(id)),
   deleteSpice : (update) => dispatch(deleteSpice(update))
-}) 
+}); 
 
 const SpiceContainer = (props) => {
 
   const spiceArray = [];
   props.spiceRack.forEach((spice) => {
     spiceArray.push(<SpiceDisplay name={spice.name} remaining={spice.remaining} containersize={spice.containersize} id={spice.id} updateSpice={props.updateSpice} deleteSpice={props.deleteSpice} key={spice.id}/>)
-  })
+  });
 
   return (
     (
       <div className='spice-container'>
         <button onClick={props.getSpices}>Refresh</button>
-        {spiceArray}
+        { spiceArray }
       </div>
     )
-  )
-}
+  );
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(SpiceContainer);

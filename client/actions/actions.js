@@ -6,7 +6,9 @@ import axios from 'axios';
 // To backend team: yes we will need to have updated spice info sent back from the back end; we can access spice by name, but we want to access by ID created in DB in the the case that there are replicates of each spice. 
 
 
-
+export const loggedInActionCreator = () => ({
+    type: types.LOGGED_IN,
+});
 
 export const addSpice = spiceInfo => (dispatch) => {
     console.log("addspice dispatch");
@@ -21,8 +23,8 @@ export const addSpice = spiceInfo => (dispatch) => {
 
 // Is it possible to send back the ID that was deleted? 
 export const deleteSpice = id => (dispatch) => {
-    const ID = {id: id}
-    axios.delete('/spice', {data: ID})
+    const ID = { id: id }
+    axios.delete('/spice', { data: ID })
         .then( data => {
             dispatch({
             type: types.DELETE_SPICE,
@@ -32,7 +34,7 @@ export const deleteSpice = id => (dispatch) => {
 };
 
 export const updateAmount = spiceInfo => (dispatch) => {
-    axios.patch('/spice', {spiceInfo})
+    axios.patch('/spice', { spiceInfo })
         .then(data => {
             dispatch({
             type: types.UPDATE_AMOUNT,
