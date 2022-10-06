@@ -77,11 +77,13 @@ button {
 .main{
   display: flex;
   align-items: center;
-  /* flex-direction: column; */
+  flex-direction: column;
   gap: 30px;
   margin: auto;
   padding: 8px;
-  width: 70%;
+  width: auto;
+  min-width: 350px;
+  max-width: 40%;
   text-align: center;
   background-color: rgb(194, 109, 109);
   border: 2px solid rgb(185, 95, 95);
