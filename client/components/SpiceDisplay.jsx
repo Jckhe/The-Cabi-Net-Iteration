@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
 
 const SpiceDisplay = (props) => {
+    const [remainingPercentage, updateRemaining] = useState(props.remaining);
+    const [inputValue, setInputValue] = useState('');
     //destructured object of the props, pased from SpiceContainer
     const { 
         name, 
@@ -13,30 +15,42 @@ const SpiceDisplay = (props) => {
     } = props;
     
     const handleClick = () => {
-        const newRemaining = document.getElementById(`${id}`).value;
-        const updatedSpice = {
-            remaining: newRemaining,
-            id: id
+        const spiceObj = {
+            remaining: Number(inputValue),
+            id: Number(id)
         };
-        updateSpice(updatedSpice);
+        //change the useState of the remaining useState variable
+        updateRemaining(Number(inputValue))
+        //invoke update spice (prop function)
+        updateSpice(spiceObj);
+        //clear the input field after submit
+        setInputValue('')
     };
+
+    function handleDel() {
+        deleteSpice(id);
+    }
+
+    //only rerenders on updates 
+    useEffect(() => {
+    }, [remainingPercentage])
 
     return (
         <div className='spice-display'>
-            <p>
                 <div className='info-display'>
-                    <strong>{name}</strong>
-                    <em>{remaining}%</em>
-                    <>Size: {containersize}</>
+                    <p>
+                    <strong>Spice: {name}  </strong>
+                    <em> Remaining: {remainingPercentage}%  </em>
+                    <>Size: {containersize}  </>
+                    </p>
                 </div>
-                <input type='number' id={`${id}`}></input>
+                <input type='number' value={inputValue} onChange={(e) => {setInputValue(e.target.value)}} id={`${id}`}></input>
                 <button className='update' onClick={handleClick}>Update Amount</button>
-                <button className='delete' onClick={() => deleteSpice(id)}>Delete</button>
-            </p>
+                <button className='delete' onClick={handleDel}>Delete</button>
         </div>   
     );
 };
 
 
-export default SpiceDisplay;
 
+export default SpiceDisplay;

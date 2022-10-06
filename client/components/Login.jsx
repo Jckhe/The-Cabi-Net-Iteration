@@ -1,19 +1,41 @@
 import React, { useState, useEffect } from 'react';
 
 
-//need button for login
-    //fetch request (post)
-//button for sign up
 
 
 export function LoginPage (props) {
-  const [username, setUserName] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('')
 //sign up state here
   const [signup , toggleSignUp] = useState(false);
 
 //deconstruct the props
   const { loginHandler } = props;
+
+
+  function handleClick(event) {
+    let action;
+    if (signup) action = 'signup'
+    else action = 'login'
+    let url = '/api/' + action
+    fetch(url, {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+            'Accept': "application/json, text/plain",
+            'Content-Type': 'application/json',
+            'x-Trigger': 'CORS'
+          },
+          body: JSON.stringify({username: username, password: password})
+    })
+        .then((res) => {
+            if (res.status === 200 || res.status === 201) {
+                console.log(res)
+                loginHandler(username);
+                return res;
+            }
+        });
+};
 
   //login/signup modals
   return (
@@ -26,7 +48,7 @@ export function LoginPage (props) {
           <input type = "password" placeholder="Password" value={password} onChange={(e) => {setPassword(e.target.value)}} required/>
         </div>
         <div className="loginSubmitContainer">
-          <input type="submit" onClick={() => {loginHandler()}} className="loginButton"/>
+          <input type="submit" onClick={() => {loginHandler(username, password)}} className="loginButton"/>
         </div>
         { signup 
           ? <div> <p>Already have an account?</p><button onClick={() => {toggleSignUp(false)}}>Return to Login</button> </div> 

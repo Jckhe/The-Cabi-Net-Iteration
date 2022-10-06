@@ -1,19 +1,24 @@
 body {
-  margin: 0;
-  background-color: rgb(125, 90, 80);
+  /* background: radial-gradient(ellipse at center, #cb4815 0%,#521b06 28%,#411301 66%,#7a371c 100%); */
+  background: linear-gradient(90deg, rgb(181, 35, 35), rgb(125, 9, 61), rgb(88, 12, 56), rgb(96, 6, 96));
 }
 
+
 input {
+  background-color: antiquewhite;
   padding: 3px;
   margin: 5px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px;
 }
 
 button {
   padding: 3px;
   margin: 5px;
-  background-color: white;
+  background-color: antiquewhite;
   color: black;
   border-radius: 5px;
+  box-shadow: 0 0 5px;
 }
 
 .nav-bar {
@@ -35,7 +40,7 @@ button {
   margin: 10px auto;
   text-align: center;
   border-radius: 5px;
-  background: rgb(252, 222, 192);
+  background: rgb(178, 49, 45);
 }
 
 .spice-container {
@@ -43,19 +48,43 @@ button {
   width: 800px;
   margin: 0 auto;
   border-radius: 5px;
-  background-color: black;
+  box-shadow: 0 0 4px;
+  background-color: rgb(71, 69, 69);
 }
 
 .spice-display {
   display: flex;
   justify-content: space-around;
-  border: 2px solid black;
+  border: 2px solid rgb(58, 57, 57);
   border-radius: 5px;
-  background-color: rgb(252, 222, 192);
+  box-shadow: 0 0 3px;
+  background-color: rgb(178, 49, 45);
   margin: 5px;
 }
 
 .info-display {
   display: flex;
   justify-content: space-between;
+}
+#root {
+  color: rgb(0, 0, 0);
+  display: flex!;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.main{
+  display: flex;
+  align-items: center;
+  /* flex-direction: column; */
+  gap: 30px;
+  margin: auto;
+  padding: 8px;
+  width: 70%;
+  text-align: center;
+  background-color: rgb(194, 109, 109);
+  border: 2px solid rgb(185, 95, 95);
+  box-shadow: 5px 5px 5px rgba(125, 9, 61, .3);
+  border-radius: 30px;
 }

@@ -2,9 +2,6 @@
 import * as types from '../constants/actionTypes.js';
 
 
-// To backend team: yes we will need to have updated spice info sent back from the back end; we can access spice by name, but we want to access by ID created in DB in the the case that there are replicates of each spice. 
-
-
 export const loggedInActionCreator = () => ({
   type: types.LOGGED_IN,
 });

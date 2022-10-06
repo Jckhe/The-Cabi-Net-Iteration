@@ -1,8 +1,12 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import { connect } from 'react-redux';
 
 // I think prop drilling the props down from SpiceContainer will be better than mappingstate and dispatch to props here..
 // then once onSubmit is invoked, we can go up the chain into SpiceContainer and send the info to actions.js
 
+const mapStateToProps = state => ({
+  username: state.spices.username
+});
 
 const AddSpice = (props) => {
 
@@ -10,13 +14,13 @@ const AddSpice = (props) => {
     const name = document.getElementById('name').value
     const containerSize = document.getElementById('containerSize').value
     const remaining = document.getElementById('remaining').value
-    const spiceInfo = {
+    const spiceObj = {
       name: name,
-      containerSize: containerSize,
+      containersize: containerSize,
       remaining: remaining
     }
-    console.log('this is the spiceInfo ', spiceInfo)
-    props.createSpice(spiceInfo)
+    console.log('this is the spiceInfo ', spiceObj, )
+    props.createSpice(spiceObj);
   }
 
   return (
@@ -33,4 +37,4 @@ const AddSpice = (props) => {
   )
 }
 
-export default AddSpice;
+export default connect(mapStateToProps)(AddSpice)

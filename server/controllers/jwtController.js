@@ -12,6 +12,7 @@ jwtController.setToken = (req, res, next) => {
     }
     //save the result of jwt.sign() and pass into the res.locals variable
     const token = jwt.sign(data, jwtSecretKey);
+    console.log("JWT TOKEN SET!")
     res.locals.token = token;
     return next();
 }
@@ -28,6 +29,7 @@ jwtController.validateToken = (req, res, next) => {
     const verified = jwt.verify(token, jwtSecretKey);
     //if condition checking the verification results.
     if(verified){
+        console.log("JWT TOKEN VALID!")
         return next()
     }else{
         // Access Denied

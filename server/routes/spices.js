@@ -17,7 +17,7 @@ router.post('/:user', spiceController.createSpice, (req, res) => {
 })
 
 // patch request for spices
-router.patch('/', spiceController.updateSpice, (req,res) => {
+router.patch('/update', spiceController.updateSpice, (req,res) => {
     console.log('updating spice');
     res.status(200).json();
 })

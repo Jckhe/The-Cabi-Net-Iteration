@@ -20,6 +20,7 @@ userController.signUp = (req, res, next) => {
 userController.logIn = (req, res, next) => {
     //deconstruct the request body
     const { username, password } = req.body;
+    console.log("USERCONTROLLER LOGIN: ", req.body)
     //pass in parameters with only username needed.
     const params = [username]
     const getQuery = `SELECT * FROM usertable WHERE username = $1`;
