@@ -3,7 +3,6 @@ const spiceController = require('../controllers/spiceController');
 const jwtController = require('../controllers/jwtController');
 const router = express.Router();
 
-
 // get request for spices
 router.get('/:user', jwtController.validateToken, spiceController.getSpices, (req, res) => {
     console.log('sending spices');
@@ -18,13 +17,13 @@ router.post('/:user', jwtController.validateToken, spiceController.createSpice, 
 })
 
 // patch request for spices
-router.patch('/update',  jwtController.validateToken, spiceController.updateSpice, (req,res) => {
+router.patch('/update', jwtController.validateToken, spiceController.updateSpice, (req,res) => {
     console.log('updating spice');
     res.status(200).json();
 })
 
 // delete request for spices
-router.delete('/', spiceController.deleteSpice, (req,res)=> {
+router.delete('/', jwtController.validateToken, spiceController.deleteSpice, (req,res)=> {
     console.log('deleting spice');
     res.status(200).json();
 })

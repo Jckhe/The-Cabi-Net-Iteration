@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar.jsx';
 import AddSpice from '../components/AddSpice.jsx';
 import SpiceContainer from './SpiceContainer.jsx';
 // import { updateSpiceActionCreator } from '../actions/actions.js';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { updateSpice } from '../../server/controllers/spiceController.js';
 
 const mapStateToProps = state => ({
@@ -16,7 +16,25 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const MainContainer = (props) => {
+  const dispatch = useDispatch();
+  const [ updateRack, toggleRack ] = useState(0);
 
+
+  function handleGet(e) {
+    console.log('Handle Get in Main Container', props.username);
+    fetch(`/spice/${props.username}`, {
+      method: 'GET',
+        headers: {
+          'Accept': "application/json, text/plain, */*",
+          'Content-Type': 'application/json',
+          },
+        })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log('inside handleGet after request');
+        return dispatch(/*on click function here*/{ type: 'GENERATE_SPICE', payload: data })
+    })};
+  
   function handlePost(spiceObj) {
     fetch(`/spice/${props.username}`, {
       method: 'POST',
@@ -31,13 +49,20 @@ const MainContainer = (props) => {
       }),
     })
       .then((res) => {
-        console.log('response in handlePost: ', res)
+        console.log('response in handlePost, main container: ', res)
+        //this will update the state variable, updateRack, and increment it by 1
+        //by doing this, it will proc the useEffect to re-render with updated spice
+        toggleRack((rack) => rack + 1)
         return updateSpice(res.json());
       })
       .catch((err) => {
         console.log(err);
       })
   };
+  
+  useEffect(() => {
+    if (props.username !== '') handleGet()
+  }, [props.username, updateRack])
 
 
   return (

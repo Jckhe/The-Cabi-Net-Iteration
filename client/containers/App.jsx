@@ -47,6 +47,7 @@ export default function App() {
   function loginHandler(username) {
 		setUsername(username);
 		toggleLoggedIn(true);
+    
 	};
 
   const logoutHandler = () => {
@@ -61,7 +62,7 @@ export default function App() {
 
   return (
     <div className='appDiv'>
-      {LoggedIn ? <MainContainer logout={logoutHandler} />: <LoginPage loginHandler={loginHandler} />} 
+      {LoggedIn ? <MainContainer isLoggedIn={username !== '' ? true : false} logout={logoutHandler} />: <LoginPage loginHandler={loginHandler} />} 
     </div>
   );
 };

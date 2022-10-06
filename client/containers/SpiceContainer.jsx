@@ -13,28 +13,12 @@ const mapStateToProps = state => ({
 
 //updateSpice is reducer for both adding a new spice and updating details in spice, returns entire spiceObj for spiceList
 const mapDispatchToProps = dispatch => ({
-  generateSpiceList : (spiceList) => dispatch(/*on click function here*/{ type: 'GENERATE_SPICE', payload: spiceList }),
   updateSpice : (spiceObj) => dispatch(/*function here*/{ type: 'UPDATE_SPICE', payload: spiceObj }),
   deleteSpice: (id) => dispatch(/*function here*/{ type: 'DELETE_SPICE', payload: id })
 }); 
 
 const SpiceContainer = (props) => {
 
-
-  function handleGet(e) {
-    console.log('Handle Get in Spice Container', props.username);
-    fetch(`/spice/${props.username}`, {
-      method: 'GET',
-        headers: {
-          'Accept': "application/json, text/plain, */*",
-          'Content-Type': 'application/json',
-          },
-        })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log('inside handleGet after request');
-        return props.generateSpiceList(data)})
-    };
 
   function handleDel(id) {
     fetch('/spice/', {
@@ -87,7 +71,6 @@ const SpiceContainer = (props) => {
   return (
     (
       <div className='spice-container'>
-        <button onClick={handleGet}>Refresh</button>
         { spiceArray }
       </div>
     )
