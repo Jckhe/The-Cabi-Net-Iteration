@@ -6,6 +6,10 @@ export const loggedInActionCreator = () => ({
   type: types.LOGGED_IN,
 });
 
+export const logOutActionCreator = () => ({
+  type: types.LOG_OUT,
+});
+
 export const userActionCreator = (username) => ({
   type: types.USER,
   payload: username,

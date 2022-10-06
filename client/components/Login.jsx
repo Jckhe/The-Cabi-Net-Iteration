@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 
-
-
 export function LoginPage (props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('')
@@ -13,11 +11,11 @@ export function LoginPage (props) {
   const { loginHandler } = props;
 
 
-  function handleClick(event) {
+  function handleClick() {
     let action;
     if (signup) action = 'signup'
     else action = 'login'
-    let url = '/api/' + action
+    let url = '/users/' + action
     fetch(url, {
         method: 'POST',
         credentials: 'include',
@@ -48,7 +46,7 @@ export function LoginPage (props) {
           <input type = "password" placeholder="Password" value={password} onChange={(e) => {setPassword(e.target.value)}} required/>
         </div>
         <div className="loginSubmitContainer">
-          <input type="submit" onClick={() => {loginHandler(username, password)}} className="loginButton"/>
+          <input type="submit" onClick={() => {handleClick()}} className="loginButton"/>
         </div>
         { signup 
           ? <div> <p>Already have an account?</p><button onClick={() => {toggleSignUp(false)}}>Return to Login</button> </div> 
