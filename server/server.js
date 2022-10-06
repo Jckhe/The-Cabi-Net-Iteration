@@ -1,5 +1,6 @@
 const express = require('express');
 // const path = require('path');
+const cookieParser = require('cookie-parser');
 const app = express();
 const spicesRouter = require('./routes/spices.js');
 const usersRouter = require('./routes/users.js');
@@ -9,7 +10,7 @@ const dotenv = require('dotenv');
 //parsing json, etc
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use(cookieParser());
 //routers
 app.use('/spice', spicesRouter);
 app.use('/users', usersRouter);

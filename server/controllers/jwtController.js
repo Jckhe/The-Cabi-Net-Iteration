@@ -19,14 +19,10 @@ jwtController.setToken = (req, res, next) => {
 
 
 jwtController.validateToken = (req, res, next) => {
-    //set header and secret keys from the process .env file
-    let tokenHeaderKey = process.env.TOKEN_HEADER_KEY;
+    //import the secret key from process.env
     let jwtSecretKey = process.env.JWT_SECRET_KEY;
-
-    //set token to the request header with the key of tokenHeaderKey
-    const token = req.header(tokenHeaderKey);
     //save the result of invoking the jwt.verify function in verified
-    const verified = jwt.verify(token, jwtSecretKey);
+    const verified = jwt.verify(req.cookies.JWT, jwtSecretKey);
     //if condition checking the verification results.
     if(verified){
         console.log("JWT TOKEN VALID!")
